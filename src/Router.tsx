@@ -3,7 +3,6 @@ import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Icon from 'react-native-vector-icons/Entypo';
 
 import navigationStyles from './styles/navigationStyles';
 import { StackParamList, TabStackParamList } from './types/navigationTypes';
@@ -17,14 +16,17 @@ import AnalyticsScreen from './screens/Private/Analytics';
 
 import PaymentDetailsScreen from './screens/Private/Settings/PaymentDetails';
 
+import AddReport from './screens/Private/Reports/AddReport';
+
 import TabBar from './components/common/TabBar';
+import AddButton from './components/reports/AddButton';
 
 import getHeaderTitle from './tools/getHeaderTitle';
 
 const Stack = createStackNavigator<StackParamList>();
 const Tab = createBottomTabNavigator<TabStackParamList>();
 
-const MainScreen: React.FunctionComponent<{}> = () => {
+const MainScreen = () => {
   return (
     <Tab.Navigator tabBar={props => <TabBar {...props} />}>
       <Tab.Screen name="Reports" component={ReportsScreen} />
@@ -34,11 +36,11 @@ const MainScreen: React.FunctionComponent<{}> = () => {
   );
 };
 
-const Router: React.FunctionComponent<{}> = () => {
+const Router = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Main"
+        initialRouteName="AddReport"
         screenOptions={{ ...navigationStyles }}
       >
         <Stack.Screen
@@ -53,26 +55,27 @@ const Router: React.FunctionComponent<{}> = () => {
         />
         <Stack.Screen
           name="Main"
-          options={({ route }) => ({
+          options={({ route, navigation }) => ({
             headerTitle: getHeaderTitle(route),
             headerRight: () => {
               let routeName = getHeaderTitle(route);
               if (routeName !== 'Reports') return null;
-              return (
-                <Icon
-                  name="plus"
-                  size={20}
-                  color="#fff"
-                />
-              );
+              return <AddButton navigation={navigation} />;
             },
           })}
           component={MainScreen}
         />
         <Stack.Screen
           name="PaymentDetails"
-          options={({ route }) => ({ title: route.params.title })}
+          options={({ route }) => ({
+            title: route.params.title,
+          })}
           component={PaymentDetailsScreen}
+        />
+        <Stack.Screen
+          name="AddReport"
+          component={AddReport}
+          options={() => ({ title: 'Add Report' })}
         />
       </Stack.Navigator>
     </NavigationContainer>

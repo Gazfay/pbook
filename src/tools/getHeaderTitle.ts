@@ -6,7 +6,7 @@ import { StackParamList } from '../types/navigationTypes';
 type MainScreenRouteProp = RouteProp<StackParamList, 'Main'>;
 
 function getHeaderTitle(route: MainScreenRouteProp) {
-  const routeName = getFocusedRouteNameFromRoute(route) ?? 'Repors';
+  const routeName = getFocusedRouteNameFromRoute(route) ?? 'Reports';
   return routeName;
 }
 

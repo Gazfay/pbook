@@ -1,8 +1,8 @@
-interface IIcons {
+interface Icons {
   [key: string]: string;
 }
 
-const Icons: IIcons = {
+const Icons: Icons = {
   gas: 'fire',
   water: 'blood-drop',
   electricity: 'flash',

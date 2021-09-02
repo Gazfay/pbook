@@ -6,9 +6,12 @@ export type StackParamList = {
   SignIn: undefined;
   SignUp: undefined;
   Main: undefined;
+  AddReport: {
+    title: string;
+  };
   PaymentDetails: {
-    id: Number;
-    title: String;
+    id: number;
+    title?: string;
     payment: any;
   };
 };

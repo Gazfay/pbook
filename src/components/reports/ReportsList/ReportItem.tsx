@@ -60,7 +60,7 @@ const Item = ({ title }) => {
       value = `${price} ₴`;
     }
     return <Text style={styles.price}>{value}</Text>;
-  }
+  };
 
   const renderLine = item => {
     const { type } = item;

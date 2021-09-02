@@ -1,10 +1,10 @@
 import { createContext, useContext } from 'react';
 import UserStore from './userStore';
 
-export interface IStore {
+export interface Store {
   userStore: UserStore;
 }
-export const store: IStore = {
+export const store: Store = {
   userStore: new UserStore(),
 };
 

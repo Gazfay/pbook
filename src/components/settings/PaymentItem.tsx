@@ -5,12 +5,12 @@ import { RFValue } from 'react-native-responsive-fontsize';
 
 import getIconByEntityType from '../../tools/getIconByEntityType';
 
-interface IPaymentItemProps {
+interface PaymentItemProps {
   payment: any;
   openDetails: Function;
 }
 
-const PaymentItem = ({ payment, openDetails }: IPaymentItemProps) => {
+const PaymentItem = ({ payment, openDetails }: PaymentItemProps) => {
   const renderPrices = () => {
     const { prices } = payment;
     console.log(payment, 'Payment inner');

@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from 'react';
-import { TextInputProps } from '@types/react-native';
+import { TextInputProps } from 'react-native';
 import { StyleSheet, View, TextInput } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 
-interface IInput extends TextInputProps {
+interface InputProps extends TextInputProps {
   value?: string;
   onChangeText?: (text: string) => void;
 }
@@ -13,7 +13,7 @@ const Input = ({
   onChangeText,
   secureTextEntry = false,
   ...props
-}: IInput) => {
+}: InputProps) => {
   const inputRef = useRef(null);
   useEffect(() => {
     if (inputRef.current && secureTextEntry) {

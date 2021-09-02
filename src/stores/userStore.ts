@@ -1,12 +1,12 @@
 import { makeAutoObservable } from 'mobx';
 
-interface IUser {
+interface User {
   name: string;
   id: string;
 }
 
 class UserStore {
-  user: IUser | null;
+  user: User | null;
   loading: boolean;
 
   constructor() {
@@ -15,7 +15,7 @@ class UserStore {
     makeAutoObservable(this);
   }
 
-  setUser(user: IUser): void {
+  setUser(user: User): void {
     this.loading = true;
     this.user = user;
   }
