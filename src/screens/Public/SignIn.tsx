@@ -10,13 +10,16 @@ import Input from '../../components/common/Input';
 
 import { DefaultNavigationProps } from '../../types/navigationTypes';
 
-interface ISignInProps {
+interface SignInProps {
   navigation: DefaultNavigationProps<'SignIn'>;
 }
 
-const SignIn = ({ navigation }: ISignInProps) => {
+const SignIn = ({ navigation }: SignInProps) => {
   const [email, changeEmail] = useState('');
   const [password, changePassword] = useState('');
+
+  
+
   return (
     <Screen>
       <KeyboardAwareScrollView

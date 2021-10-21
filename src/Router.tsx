@@ -7,8 +7,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import navigationStyles from './styles/navigationStyles';
 import { StackParamList, TabStackParamList } from './types/navigationTypes';
 
-import SginInScreen from './screens/Public/SignIn';
-import SginUpScreen from './screens/Public/SignUp';
+import SignInScreen from './screens/Public/SignIn';
+import SignUpScreen from './screens/Public/SignUp';
 
 import ReportsScreen from './screens/Private/Reports';
 import SettingsScreen from './screens/Private/Settings';
@@ -40,18 +40,18 @@ const Router = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="AddReport"
+        //initialRouteName="AddReport"
         screenOptions={{ ...navigationStyles }}
       >
         <Stack.Screen
           name="SignIn"
           options={{ headerShown: false }}
-          component={SginInScreen}
+          component={SignInScreen}
         />
         <Stack.Screen
           name="SignUp"
           options={{ headerTitle: 'Sign Up' }}
-          component={SginUpScreen}
+          component={SignUpScreen}
         />
         <Stack.Screen
           name="Main"

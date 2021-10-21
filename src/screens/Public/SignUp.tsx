@@ -7,16 +7,24 @@ import Screen from '../../components/common/Screen';
 import Button from '../../components/common/Button';
 import Input from '../../components/common/Input';
 
+import useStore from '../../stores';
+
 import { DefaultNavigationProps } from '../../types/navigationTypes';
 
 interface ISignUpProps {
-  navigation: DefaultNavigationProps<'SignIn'>;
+  navigation: DefaultNavigationProps<'SignUp'>;
 }
 
-const SignIn = ({ navigation }: ISignUpProps) => {
+const SignUp = ({ navigation }: ISignUpProps) => {
   const [userName, changeUserName] = useState('');
   const [email, changeEmail] = useState('');
   const [password, changePassword] = useState('');
+  const { userStore } = useStore();
+
+  const signUpUser = () => {
+    userStore.createUser(email, password);
+  };
+
   return (
     <Screen enableOffset={false}>
       <KeyboardAwareScrollView
@@ -44,10 +52,7 @@ const SignIn = ({ navigation }: ISignUpProps) => {
             placeholder="Password"
             secureTextEntry={true}
           />
-          <Button
-            text={'SIGN-UP'}
-            onPress={() => {}}
-          />
+          <Button text={'SIGN-UP'} onPress={signUpUser} />
         </View>
       </KeyboardAwareScrollView>
     </Screen>
@@ -75,4 +80,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SignIn;
+export default SignUp;

@@ -10,6 +10,8 @@ export const store: Store = {
 
 export const StoreContext = createContext(store);
 
-export const useStore = () => {
+const useStore = () => {
   return useContext(StoreContext);
 };
+
+export default useStore;

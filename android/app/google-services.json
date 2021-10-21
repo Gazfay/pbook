@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "967917004038",
+    "project_id": "pbook-ad969",
+    "storage_bucket": "pbook-ad969.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:967917004038:android:bcc666f7d53f55c11fea87",
+        "android_client_info": {
+          "package_name": "com.pbook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "967917004038-757im2blbe0hfss2ash37ctdbpcljumq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6o9cSbLiTd8V-PbuK6Fjhl8tNyaWRu5Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "967917004038-757im2blbe0hfss2ash37ctdbpcljumq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "967917004038-u1nvqk4std2b6n353mmeqtq0iqs6mq0n.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.pbook"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
