@@ -16,17 +16,20 @@ class UserStore {
     makeAutoObservable(this);
   }
 
-  setUser(user: User): void {
-    this.loading = true;
+  setUser(user) {
+    console.log('Set user');
+    this.loading = false;
     this.user = user;
   }
 
   createUser(email: string, password: string) {
     console.log('start register');
+    this.loading = true;
     auth()
       .createUserWithEmailAndPassword(email, password)
-      .then(() => {
-        console.log('User account created & signed in!');
+      .then(response => {
+        console.log('User account created & signed in!', response);
+        this.setUser(response.user);
       })
       .catch(error => {
         if (error.code === 'auth/email-already-in-use') {
@@ -36,6 +39,7 @@ class UserStore {
           console.log('That email address is invalid!');
         }
         console.log(error);
+        this.loading = false;
       });
   }
 }

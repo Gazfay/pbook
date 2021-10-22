@@ -3,6 +3,9 @@ import { Text, StyleSheet, View, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Entypo';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { RFValue } from "react-native-responsive-fontsize";
+import { observer } from "mobx-react-lite"
+
+import { useStore } from '../../stores';
 
 import Screen from '../../components/common/Screen';
 import Button from '../../components/common/Button';
@@ -14,11 +17,13 @@ interface SignInProps {
   navigation: DefaultNavigationProps<'SignIn'>;
 }
 
-const SignIn = ({ navigation }: SignInProps) => {
+const SignIn = observer(({ navigation }: SignInProps) => {
   const [email, changeEmail] = useState('');
   const [password, changePassword] = useState('');
 
-  
+  const { userStore } = useStore();
+
+  console.log(userStore, 'User store');
 
   return (
     <Screen>
@@ -45,7 +50,7 @@ const SignIn = ({ navigation }: SignInProps) => {
           />
           <Button
             text={'SIGN-IN'}
-            onPress={() => {}}
+            onPress={() => userStore.setUser({ id: 1, name: 2 })}
           />
           <TouchableOpacity
             style={styles.signUpButton}
@@ -57,7 +62,7 @@ const SignIn = ({ navigation }: SignInProps) => {
       </KeyboardAwareScrollView>
     </Screen>
   );
-};
+});
 
 const styles = StyleSheet.create({
   container: {

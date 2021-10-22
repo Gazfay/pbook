@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { TextInputProps } from 'react-native';
+import { TextInputProps, Text } from 'react-native';
 import { StyleSheet, View, TextInput } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 

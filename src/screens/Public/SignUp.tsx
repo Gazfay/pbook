@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Text, StyleSheet, View, TouchableOpacity } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { RFValue } from "react-native-responsive-fontsize";
+import { observer } from "mobx-react-lite"
 
 import Screen from '../../components/common/Screen';
 import Button from '../../components/common/Button';
@@ -11,19 +12,37 @@ import useStore from '../../stores';
 
 import { DefaultNavigationProps } from '../../types/navigationTypes';
 
-interface ISignUpProps {
+interface SignUpProps {
   navigation: DefaultNavigationProps<'SignUp'>;
 }
 
-const SignUp = ({ navigation }: ISignUpProps) => {
-  const [userName, changeUserName] = useState('');
+const SignUp = observer(data => {
   const [email, changeEmail] = useState('');
   const [password, changePassword] = useState('');
+  const [repeatPassword, setRepeatPassword] = useState('');
   const { userStore } = useStore();
 
   const signUpUser = () => {
-    userStore.createUser(email, password);
+    // if (!isValidEmail(email)) {
+    //   console.log('Invalid email');
+    //   return;
+    // }
+
+    // if (repeatPassword !== password) {
+    //   console.log('Password dont match');
+    //   return;
+    // }
+
+    // userStore.createUser(email, password);
+    userStore.setUser({ id: 1, name: '2' });
   };
+
+  const isValidEmail = (_email: string): boolean => {
+    const regEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return regEx.test(String(_email).toLowerCase());
+  };
+
+  console.log(userStore, data, 'User store');
 
   return (
     <Screen enableOffset={false}>
@@ -37,11 +56,6 @@ const SignUp = ({ navigation }: ISignUpProps) => {
             Welcome to PBook{'\n'}Please, fill inputs to continue process.
           </Text>
           <Input
-            value={userName}
-            onChangeText={inputUserName => changeUserName(inputUserName)}
-            placeholder="User Name"
-          />
-          <Input
             value={email}
             onChangeText={inputEmail => changeEmail(inputEmail)}
             placeholder="Email"
@@ -52,12 +66,18 @@ const SignUp = ({ navigation }: ISignUpProps) => {
             placeholder="Password"
             secureTextEntry={true}
           />
+          <Input
+            value={repeatPassword}
+            onChangeText={inputPassword => setRepeatPassword(inputPassword)}
+            placeholder="Repeat password"
+            secureTextEntry={true}
+          />
           <Button text={'SIGN-UP'} onPress={signUpUser} />
         </View>
       </KeyboardAwareScrollView>
     </Screen>
   );
-};
+});
 
 const styles = StyleSheet.create({
   container: {
